@@ -1,0 +1,25 @@
+stages:
+- build
+- test
+- deploy
+
+job_build:
+  stage: build
+  script:
+  - echo "Building the application..."
+  - sleep 5
+  - echo "Build complete!"
+
+job_test:
+  stage: test
+  script:
+  - echo "Running tests..."
+  - sleep 3
+  - echo "Tests passed!"
+
+job_deploy:
+  stage: deploy
+  script:
+  - echo "Deploying application..."
+  - sleep 3
+  - echo "Deployment complete!"
