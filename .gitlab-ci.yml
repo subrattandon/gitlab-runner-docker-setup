@@ -1,25 +1,22 @@
 stages:
-- build
 - test
+- build
 - deploy
 
-job_build:
-  stage: build
-  script:
-  - echo "Building the application..."
-  - sleep 5
-  - echo "Build complete!"
-
-job_test:
+test-job:
   stage: test
   script:
   - echo "Running tests..."
-  - sleep 3
-  - echo "Tests passed!"
+  - pytest || exit 1 # Agar pytest use kar raha hai
 
-job_deploy:
+build-job:
+  stage: build
+  script:
+  - echo "Building project..."
+  - python setup.py build || exit 1 # Agar build karna hai
+
+deploy-job:
   stage: deploy
   script:
-  - echo "Deploying application..."
-  - sleep 3
-  - echo "Deployment complete!"
+  - echo "Deploying project..."
+  - echo "Deploy complete!"
